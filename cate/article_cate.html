@@ -44,8 +44,8 @@
                 <td>{{$value.cate_name}}</td>
                 <td>{{$value.cate_alias}}</td>
                 <td>
-                    <button type="button" class="layui-btn layui-btn-sm">编辑</button>
-                    <button type="button" class="layui-btn layui-btn-sm  layui-btn-danger">删除</button>
+                    <button type="button" class="layui-btn layui-btn-sm btnEdit" data-id="{{$value.id}}">编辑</button>
+                    <button type="button" class="layui-btn layui-btn-sm  layui-btn-danger" id="btnDelete"  data-id="{{$value.id}}">删除</button>
                 </td>
             </tr>
         {{/each}}
@@ -53,7 +53,9 @@
 
     <!-- 添加分类的弹层 -->
     <script type="text/html" id="addDialog">
-        <form class="layui-form" action="">
+        <form class="layui-form" id="addForm" lay-filter="form">
+            <!-- 借用隐藏域来显示id -->
+            <input type="hidden" name="id">
             <div class="layui-form-item">
               <label class="layui-form-label">分类名称:</label>
               <div class="layui-input-block">
