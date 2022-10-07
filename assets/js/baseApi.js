@@ -5,7 +5,7 @@ $.ajaxPrefilter(function (config) {
     let target = {}
     source.split('&').forEach((el) => {
       let kv = el.split('=')
-      target[kv[0]] = kv[1]
+      target[kv[0]] = decodeURIComponent(kv[1])
     })
     return JSON.stringify(target)
   }
@@ -17,7 +17,7 @@ $.ajaxPrefilter(function (config) {
   config.contentType = 'application/json'
 
   // 统一设置请求的参数 - post 请求
-  config.data = config.data && format2Json(config.data)
+    config.data = config.data && format2Json(config.data)
 
   // 统一设置请求头（有条件的添加）
   // 请求路径中有 /my 这样字符串的需要添加
